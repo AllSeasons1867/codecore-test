@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get('/',{to:'welcome#index'})
+  get "/questions/new", to: "questions#new", as: :new_question
+
+  get('/',{to:'welcome#index',as:'home'})
 
   get('/contact',{to:'contact#index'})  
   get('/contact_submit',{to:'contact#create'})
