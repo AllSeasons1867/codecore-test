@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+    has_many :answers
+
     validates(:title, presence: true)
 
     validates(:body, presence: {message: "must be given"}, length: {minimum: 10, maximum: 2048})
