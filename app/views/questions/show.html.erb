@@ -29,3 +29,28 @@
     </small>
 </div>
 
+<h2>Answers</h2>
+
+<%= form_for @answer do |f| %>
+    <div>
+        <%= 
+            f.text_area(
+                :body, cols: 60, rows: 6,
+                placeholder: "Provide your response here."
+            )
+        %>
+    </div>
+  <%= f.submit "Submit"%>
+<% end %>
+
+<div class="answer-list">
+    <%  @answers.each do |answer| %>
+        <div>
+            <p><%= answer.body%> </p>
+            <small>
+                Posted <%= time_ago_in_words(answer.created_at) %> ago
+            </small>
+        </div>        
+    <% end%>
+</div>
+
