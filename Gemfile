@@ -7,6 +7,8 @@ gem "pry-rails"
 
 gem "faker"
 
+gem "cowsay"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 
