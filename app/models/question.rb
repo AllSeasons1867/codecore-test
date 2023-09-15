@@ -7,11 +7,15 @@ class Question < ApplicationRecord
 
     validate :no_monkey
 
-    before_validation :set_default_view_count
+    before_validation :set_default_view_count, :set_default_like_count
 
     private 
     def set_default_view_count
         self.view_count ||= 0
+    end
+
+    def set_default_like_count
+        self.like_count ||= 0
     end
 
     def no_monkey

@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
 
     def index
         @questions = Question.order(created_at: :desc)
-        render json: @questions
+        # render json: @questions
     end
 
     def edit
@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
     end
 
     def destroy 
-        @question = Question.find params[:id]
+        @question = Question.find(params[:id])
         @question.destroy
         redirect_to questions_path
     end
