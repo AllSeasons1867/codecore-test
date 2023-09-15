@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
         @question.save
 
         @answers = @question.answers.order(created_at: :desc)
+        @answer = Answer.new
     end
 
     def index

@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get "/questions/new", to: "questions#new", as: :new_question
-  post "/questions", to: "questions#create", as: :questions
-  get "/questions/:id", to: "questions#show", as: :question 
-  get "/questions", to: "questions#index"
-  get "/questions/:id/edit", to: "questions#edit", as: :edit_question
-  patch "/questions/:id", to: "questions#update"
-  put "/questions/:id", to: "questions#update"
-  delete "/questions/:id", to: "questions#destroy"
+  resources :questions do 
+    resources :answers, only: [:create, :destroy]
+  end
+
+  # get "/questions/new", to: "questions#new", as: :new_question
+  # post "/questions", to: "questions#create", as: :questions
+  # get "/questions/:id", to: "questions#show", as: :question 
+  # get "/questions", to: "questions#index"
+  # get "/questions/:id/edit", to: "questions#edit", as: :edit_question
+  # patch "/questions/:id", to: "questions#update"
+  # put "/questions/:id", to: "questions#update"
+  # delete "/questions/:id", to: "questions#destroy"
 
   get('/',{to:'welcome#index',as:'home'})
 
