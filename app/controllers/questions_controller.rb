@@ -17,6 +17,8 @@ class QuestionsController < ApplicationController
         @question = Question.find params[:id]
         @question.view_count += 1
         @question.save
+
+        @answers = @question.answers.order(created_at: :desc)
     end
 
     def index
