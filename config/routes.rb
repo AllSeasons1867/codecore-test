@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "/questions/new", to: "questions#new", as: :new_question
+  post "/questions", to: "questions#create", as: :questions
+  get "/questions/:id", to: "questions#show", as: :question 
+  get "/questions", to: "questions#index"
 
   get('/',{to:'welcome#index',as:'home'})
 
