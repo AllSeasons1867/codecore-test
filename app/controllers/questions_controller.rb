@@ -15,6 +15,33 @@ class QuestionsController < ApplicationController
 
     def show 
         @question = Question.find params[:id]
+        @question.view_count += 1
+        @question.save
+    end
+
+    def index
+        @questions = Question.order(created_at: :desc)
+        render json: @questions
+    end
+
+    def edit
+        @question = Question.find params[:id]
+    end
+
+    def update 
+        @question = Question.find params[:id]
+
+        if @question.update(question_params)
+            redirect_to question_path(@question.id)
+        else 
+            render :edit
+        end
+    end
+
+    def destroy 
+        @question = Question.find params[:id]
+        @question.destroy
+        redirect_to questions_path
     end
 
     private
