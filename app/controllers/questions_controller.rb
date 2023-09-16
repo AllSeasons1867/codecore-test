@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+    before_action :find_question, only: [:show, :edit, :update, :destroy]
+
     def new 
         @question = Question.new
     end
@@ -14,7 +16,6 @@ class QuestionsController < ApplicationController
     end
 
     def show 
-        @question = Question.find params[:id]
         @question.view_count += 1
         @question.save
 
@@ -28,11 +29,9 @@ class QuestionsController < ApplicationController
     end
 
     def edit
-        @question = Question.find params[:id]
     end
 
     def update 
-        @question = Question.find params[:id]
 
         if @question.update(question_params)
             redirect_to question_path(@question.id)
@@ -42,7 +41,6 @@ class QuestionsController < ApplicationController
     end
 
     def destroy 
-        @question = Question.find(params[:id])
         @question.destroy
         redirect_to questions_path
     end
@@ -50,5 +48,9 @@ class QuestionsController < ApplicationController
     private
     def question_params 
         params.require(:question).permit(:title, :body)
+    end
+
+    def find_question
+        @question = Question.find params[:id]
     end
 end
