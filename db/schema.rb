@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_182237) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_16_182345) do
   create_table "answers", force: :cascade do |t|
     t.text "body"
     t.integer "question_id", null: false
@@ -26,6 +26,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_182237) do
     t.datetime "updated_at", null: false
     t.integer "view_count"
     t.integer "like_count"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "answers", "questions"
