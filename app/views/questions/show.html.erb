@@ -31,7 +31,7 @@
 
 <h2>Answers</h2>
 
-<%= form_for @answer do |f| %>
+<%= form_for [@question,@answer] do |f| %>
     <div>
         <%= 
             f.text_area(
