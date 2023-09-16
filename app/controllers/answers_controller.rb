@@ -12,6 +12,13 @@ class AnswersController < ApplicationController
         end
     end    
 
+    def destroy 
+        @answer = Answer.find params[:id]
+        @answer.destroy 
+
+        redirect_to question_path(@answer.question)
+    end
+
     private 
     def answer_params
         params.require(:answer).permit(:body)
