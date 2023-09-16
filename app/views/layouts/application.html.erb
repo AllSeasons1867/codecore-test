@@ -23,6 +23,11 @@
         <%= link_to('Sign In', new_session_path) %>
       <%end%>
     </nav>
+    <%flash.each do |type,message|%>
+      <div class="flash flash-<%=type%>">
+        <%=message%>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
