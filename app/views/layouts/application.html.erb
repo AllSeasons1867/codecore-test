@@ -12,7 +12,12 @@
 
   <body>
     <nav>
-      <%= link_to 'Home', home_path %> | <%= link_to 'New Question', new_question_path %> | <%= link_to('Contact Us',contact_path) %> | <%= link_to 'All Questions', questions_path %> | <%= link_to "Sign Up", new_user_path %> | <%= link_to 'All Users', users_path %>
+      <%= link_to 'Home', home_path %> | <%= link_to 'New Question', new_question_path %> | <%= link_to('Contact Us',contact_path) %> | <%= link_to 'All Questions', questions_path %> | <%= link_to 'All Users', users_path %> | 
+      <% if current_user.present? %>
+        <span>Hi, <%= current_user.first_name %></span>
+      <% else %>
+        <%=link_to('Sign Up', new_user_path)%>
+      <%end%>
     </nav>
     <%= yield %>
   </body>
