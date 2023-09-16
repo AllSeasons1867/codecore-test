@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  resource :session, only: [:new, :create, :destroy]
+
   resources :users, only: [:index, :new, :create]
 
   resources :questions do 
@@ -24,3 +26,4 @@ Rails.application.routes.draw do
   get('/contact',{to:'contact#index'})  
   get('/contact_submit',{to:'contact#create'})
 end
+
