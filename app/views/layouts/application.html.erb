@@ -12,7 +12,11 @@
 
   <body>
     <nav>
-      <%= link_to 'Home', home_path %> | <%= link_to 'New Question', new_question_path %> | <%= link_to('Contact Us',contact_path) %> | <%= link_to 'All Questions', questions_path %> | <%= link_to 'All Users', users_path %> | 
+      <%= link_to 'Home', home_path %> | 
+      <%if user_signed_in?%>
+        <%= link_to 'New Question', new_question_path %> |
+      <% end %> 
+      <%= link_to('Contact Us',contact_path) %> | <%= link_to 'All Questions', questions_path %> | <%= link_to 'All Users', users_path %> | 
       <% if current_user.present? %>
         <span>Hi, <%= current_user.first_name %></span>
         |
