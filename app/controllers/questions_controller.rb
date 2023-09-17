@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :find_question, only: [:show, :edit, :update, :destroy]
+    before_action :authorize_user!, only: [:edit, :udpate, :destroy]
 
     def new 
         @question = Question.new
@@ -54,5 +55,12 @@ class QuestionsController < ApplicationController
 
     def find_question
         @question = Question.find params[:id]
+    end
+
+    def authorize_user!
+        unless can?(:manage, @question)
+            flash[:danger] = "Access Denied"
+            redirect_to question_path(@question)
+        end
     end
 end
