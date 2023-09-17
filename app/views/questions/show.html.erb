@@ -8,6 +8,9 @@
 
 <div>
     <small>
+        Posted By: <%= @question.user&.full_name || "[DELETED]"%>
+    </small>
+    <small>
         Posted <%= time_ago_in_words(@question.created_at)%> ago
     </small>
     |
@@ -47,6 +50,9 @@
     <%  @answers.each do |answer| %>
         <div>
             <p><%= answer.body%> </p>
+            <small>
+                Answered by: <%= answer.user&.full_name || "[DELETED]" %>
+            </small>
             <small>
                 Posted <%= time_ago_in_words(answer.created_at) %> ago
             </small>
