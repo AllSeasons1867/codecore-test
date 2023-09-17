@@ -10,6 +10,15 @@
 
 Answer.delete_all
 Question.delete_all 
+User.delete_all
 
+PASSWORD = "password"
+
+super_user = User.create(
+    first_name: "John",
+    last_name: "Bogle",
+    email: "jb@vanguard.com",
+    password: PASSWORD
+)
 
 
