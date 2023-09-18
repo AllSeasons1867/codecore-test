@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :questions do 
     resources :answers, only: [:create, :destroy]
+    resources :likes, shallow: true, only: [:create, :destroy]
   end
 
   # get "/questions/new", to: "questions#new", as: :new_question

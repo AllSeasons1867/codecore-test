@@ -24,6 +24,8 @@ class QuestionsController < ApplicationController
 
         @answers = @question.answers.order(created_at: :desc)
         @answer = Answer.new
+
+        @like = @question.likes.find_by(user: current_user)
     end
 
     def index

@@ -4,6 +4,8 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
+      alias_action(:create, :read, :update, :delete, to: :crud)
+
       user ||= User.new # guest user (not logged in)
       if user.admin?
         can :manage, :all
@@ -33,12 +35,16 @@ class Ability
       question.user == user
     end
 
-    can(:manage, Question) do |question|
+    can(:crud, Question) do |question|
       user == question.user
     end
 
-    can(:manage, Answer) do |answer|
+    can(:crud, Answer) do |answer|
       user == answer.user
+    end
+
+    can(:like, Question) do |question|
+      user != question.user
     end
   end
 end

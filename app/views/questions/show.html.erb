@@ -21,13 +21,22 @@
     <small>
         Seen <%= @question.view_count%> time(s)
     </small>
+    <small>
+        <%=pluralize(@question.likes.count, "like")%>
+    </small>
 </div>
 
 <%if user_signed_in?%>
 <div>
-    <small>
-        <%= link_to('Like', question_likes_path(@question), data: {turbo_method: :post})%>
-    </small>
+    <%if @like.present?%>
+        <small>
+            <%= link_to('Unlike', like_path(@like), data: {turbo_method: :delete})%>
+        </small>
+    <%else%>
+        <small>
+            <%= link_to('Like', question_likes_path(@question), data: {turbo_method: :post})%>
+        </small>
+    <%end%>
     <%if can?(:edit,@question)%>
     <small>
         <%= link_to 'Edit', edit_question_path(@question) %>
