@@ -1,0 +1,15 @@
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <%= link_to(
+        question.title,
+        question_path(question),
+        class: "awesome-tooltip",
+        title: "👀 #{question.view_count} 💖 #{question.likes.count}"
+      ) %>
+      <small>
+        Posted <%= time_ago_in_words(question.created_at) %> ago
+      </small>
+    </li>
+  <% end %>
+</ul>

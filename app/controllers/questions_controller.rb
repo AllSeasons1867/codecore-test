@@ -7,6 +7,10 @@ class QuestionsController < ApplicationController
         @question = Question.new
     end
 
+    def liked
+        @questions = current_user.liked_questions.order("likes.created_at DESC")
+    end
+
     def create
         @question = Question.new question_params
         @question.user = current_user

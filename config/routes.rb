@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :questions do 
     resources :answers, only: [:create, :destroy]
+    get :liked, on: :collection
     resources :likes, shallow: true, only: [:create, :destroy]
   end
 
