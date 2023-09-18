@@ -60,7 +60,7 @@ class QuestionsController < ApplicationController
     end
 
     def authorize_user!
-        unless can?(:manage, @question)
+        unless can?(:crud, @question)
             flash[:danger] = "Access Denied"
             redirect_to question_path(@question)
         end

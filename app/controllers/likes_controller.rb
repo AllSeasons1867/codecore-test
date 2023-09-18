@@ -3,6 +3,11 @@ class LikesController < ApplicationController
 
     def create
         question = Question.find params[:question_id]
+
+        unless can?(:like, question)
+            flash[:danger] = "That's a bit narcissistic..."
+            return redirect_to question_path(question)
+        end
     
         like = Like.new(user: current_user, question: question)
     

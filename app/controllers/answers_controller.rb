@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
     def authorize_user!
         @answer = Answer.find params[:id]
 
-        unless can?(:manage, @answer)
+        unless can?(:crud, @answer)
             flash[:danger] = "Access Denied"
             redirect_to question_path(@answer.question)
         end
