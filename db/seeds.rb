@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-
+Like.delete_all
 Answer.delete_all
 Question.delete_all 
 User.delete_all
