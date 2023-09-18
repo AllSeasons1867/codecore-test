@@ -18,7 +18,8 @@ super_user = User.create(
     first_name: "John",
     last_name: "Bogle",
     email: "jb@vanguard.com",
-    password: PASSWORD
+    password: PASSWORD,
+    admin: true
 )
 
 
